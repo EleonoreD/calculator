@@ -1,0 +1,15 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+$family: 'Roboto', serif;  
+
+body{
+    font: 100% $family;
+    background-color: #FFFFFF;
+    text-align: center;
+    margin: auto;
+}
+
+h1 {
+    color: green;
+    text-align: center;
+}
