@@ -1,5 +1,7 @@
 npm install -g babel-cli
+sudo npm i -g pm2
 
+npm install 
 
 # simple-react-full-stack
 

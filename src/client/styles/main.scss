@@ -1,6 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import 'mixins';
 
-$family: 'Roboto', serif;  
+$family: 'Oswald', serif;  
+
 
 body{
     font: 100% $family;
@@ -9,7 +12,138 @@ body{
     margin: auto;
 }
 
-h1 {
-    color: green;
-    text-align: center;
-}
+#calculator{
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    @include box-shadow(0px 0px 75px #CECECE);
+    @include rounded(10px);
+    overflow: hidden;
+
+    .result-screen{
+        margin: 30px;
+        min-height: 100px;
+        position: relative;
+
+        .calcul{
+            color: #777;
+            font-size: 20px;
+            text-align: left;
+        }
+
+        .main{
+            color: #333;
+            text-align: right;
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            font-size: 45px;
+            font-weight: bold;
+        }
+    }
+
+    .button{
+        position: absolute;
+        bottom: 0px;
+        right : -1px;
+        width: 66.6666%;
+        background: #fff1d0  radial-gradient(circle, transparent 1%, #fff1d0 1%) center/15000%;
+        color: #333;
+        font-size: 50px;
+        text-align: center;
+        height: 80px;
+        line-height: 80px;
+        cursor: pointer;
+
+        // UI Material click effect on key
+        background-position: center;
+        transition: background 0.8s;
+        &:hover{
+            background: #ffe9b4 radial-gradient(circle, transparent 1%, #ffe9b4 1%) center/15000%;
+        }
+
+        &:active{
+            background-color: #fff1d0;
+            background-size: 100%;
+            transition: background 0s;
+        }
+
+        &.clicked{
+            background: #ffe9b4  radial-gradient(circle, transparent 1%, #ffe9b4 1%) center/15000%;
+            background-size: 100%;
+            transition: background 0s;
+        }
+
+        .spinner{
+            font-size: 30px;
+        }
+        &.button-wait{
+            line-height: 63px;
+        }
+    }
+
+    .keyboard{
+        color: white;
+        background-color: #fdc646;
+        text-align: left;
+
+        .key{
+            cursor: pointer;
+            width: 33.3333333333%;
+            display: inline-block;
+            background: #ffd779 radial-gradient(circle, transparent 1%, #ffd779 1%) center/15000%;
+            position: relative;
+            height: 80px;
+            line-height: 80px;
+            font-weight: bold;
+            font-size: 25px;
+            text-align: center;
+            margin-top: 1px;
+            @include x-user-select(none);
+
+            &:after{
+                content:'';
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                width: 1px;
+                height: 100%;
+                background-color: #fdc646;
+            }
+
+            &.last-of-line{
+                &:after{
+                    background-color: transparent;
+                }
+            }
+
+            // UI Material click effect on key
+            background-position: center;
+            transition: background 0.8s;
+            &:hover{
+                background: #fdcd5d radial-gradient(circle, transparent 1%, #fdcd5d 1%) center/15000%;
+            }
+
+            &:active{
+                background-color: #ffd779;
+                background-size: 100%;
+                transition: background 0s;
+            }
+
+            &.clicked{
+                background: #fdcd5d  radial-gradient(circle, transparent 1%, #fdcd5d 1%) center/15000%;
+                background-size: 100%;
+                transition: background 0s;
+            }
+        }
+
+        .controls{
+            color: #333;
+        }
+    }
+}   

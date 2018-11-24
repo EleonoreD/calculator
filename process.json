@@ -2,8 +2,6 @@
     "apps" : [{
       "name"        : "calculator",
       "script"      : "./dist/server/index.js",
-      "watch"       : ["./dist/server"],
-      "error_file"  : "/root/logs/err.log",
-      "out_file"    : "/root/logs/out.log"
+      "watch"       : ["./dist/server"]
     }]
   }
