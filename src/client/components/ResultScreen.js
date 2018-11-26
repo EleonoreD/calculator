@@ -5,6 +5,8 @@ export default class ResultScreen extends Component {
   /*
     Component to display the current calcul ( a + b = c )
     PROPS WAITING :
+    @step : current app's step (0: defining prop a, 1: defining prop b, 2: defining result of operation)
+    @waiting : true if the app is waiting result from the server
     @a : value a of the calcul
     @b : value b of the calcul
     @c : result of the calcul or current typing value (a or b)
@@ -35,6 +37,7 @@ export default class ResultScreen extends Component {
         </div>
         <div className="main">
           <span>{ main }</span>
+          { this.props.waiting && <span className="wait">PLEASE WAIT</span> }
         </div>
       </div>
     );

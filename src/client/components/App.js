@@ -5,10 +5,9 @@ import URLSearchParams from 'url-search-params';
 import ResultScreen from './ResultScreen';
 import Keyboard from './Keyboard';
 
-// icons
+// Icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
-
 
 export default class App extends Component {
 
@@ -27,6 +26,7 @@ export default class App extends Component {
     };
   }
 
+  // listen to keypress
   componentWillMount(){
     document.addEventListener("keydown", this.handleKeyDown.bind(this));
   }
@@ -102,7 +102,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { username, a, b, c, step, waiting, entered } = this.state;
+    const { a, b, c, step, waiting, entered } = this.state;
 
     let buttonLegend = step == 0 ? "+" : "=";
     let buttonClassNames = waiting ? "button button-wait" : "button";
@@ -113,7 +113,7 @@ export default class App extends Component {
 
     return (
       <div id="calculator">
-        <ResultScreen step={step} a={a} b ={b} c={c}></ResultScreen>
+        <ResultScreen step={step} waiting={waiting} a={a} b ={b} c={c}></ResultScreen>
         <Keyboard step={step} waiting={waiting} resetCallback={this.resetCalcul.bind(this)} valueUpdated={this.currentValueUpdated.bind(this)} ></Keyboard>
         <div onClick={this.buttonClickHandler.bind(this)} className={buttonClassNames}>
           {buttonLegend}

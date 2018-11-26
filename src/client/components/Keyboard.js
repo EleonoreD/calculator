@@ -9,12 +9,15 @@ export default class Keyboard extends Component {
   /*
     Keyboard component to enter current value for a or b of the operation (a+b)
     PROPS WAITING :
+    @step : current app's step (0: defining prop a, 1: defining prop b, 2: defining result of operation)
+    @waiting : true if the app is waiting result from the server
     @valueUpdated : callback function to notify the parent
     @resetCallback : callback to reset all operation
   */
 
   state = { value: null, keypressed: null };
 
+  // listen to keypress
   componentWillMount(){
     document.addEventListener("keydown", this.handleKeyDown.bind(this));
   }
