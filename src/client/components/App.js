@@ -37,7 +37,7 @@ export default class App extends Component {
 
   // callback when a key is pressed
   handleKeyDown( event ){
-    if( event.code === "Enter" ){
+    if( event.code === "Enter" || event.code === 'NumpadEnter' ){
       this.buttonClickHandler();
       this.setState( { entered : true });
       setTimeout( ()=>{
@@ -82,7 +82,6 @@ export default class App extends Component {
 
     // if step == 2 , we got a and b parameter of the operation, we can ask the server the result
     if( newStep == 2 ){
-      console.log( this.state.a , '+', this.state.b , "= ? " );
       const params = new URLSearchParams();
       params.append('a', this.state.a || 0 );
       params.append('b', this.state.b || 0 );
@@ -91,7 +90,6 @@ export default class App extends Component {
       fetch('/api/do', { method: 'POST', body: params })
         .then(res => res.json())
         .then(result => {
-          console.log( result.value );
           this.currentValueUpdated( result.value );
           this.setState({ resultReceived : true, waiting : false });
         });

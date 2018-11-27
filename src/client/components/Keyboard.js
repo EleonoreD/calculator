@@ -47,8 +47,10 @@ export default class Keyboard extends Component {
       // detect key pressed on numbers
       let num = event.code.replace('Digit','');
       num = parseInt(num.replace('Numpad',''));
-      this.clickOnNumber( num );
-      this.animateKey( num );
+      if( !isNaN(num) ){
+        this.clickOnNumber( num );
+        this.animateKey( num );
+      }
     }
     else if( event.code === "Backspace" ){
       // detect key pressed on backspace -> clear one
